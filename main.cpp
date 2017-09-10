@@ -1,3 +1,9 @@
+/*
+Open Syobon Action
+Master from https://github.com/angelXwind/OpenSyobonAction
+Fork : 6 September 2017 at https://github.com/thaiall/OpenSyobonAction/
+Update this script : 10 September 2017
+*/
 #include "main.h"
 
 // プログラムは WinMain から始まります
@@ -4731,9 +4737,9 @@ void deinit()
     SDL_JoystickClose(joystick);
 
 //Close libraries
-    IMG_Quit();
+    /* 600910 IMG_Quit(); compiler found - error: 'IMG_Quit' was not declared in this scope */
     TTF_Quit();
-    Mix_Quit();
+    /* 600910  Mix_Quit(); compiler found - error: 'Mix_Quit' was not declared in this scope */
     SDL_Quit();
 }
 
