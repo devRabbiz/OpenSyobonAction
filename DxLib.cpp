@@ -1,10 +1,41 @@
+/*
+Open Syobon Action
+Master from https://github.com/angelXwind/OpenSyobonAction
+Fork : 6 September 2017 at https://github.com/thaiall/OpenSyobonAction/
+Update this script : 10 September 2017
+*/
 #include "DxLib.h"
+/* 600910
+Add 3 include for current compiler 
+Test on G++ - compiler version 6.3.0 and 7.1.0 
+on MinGW w64 and Cygwin in Windows 10
+
+Compiler found error
+'va_list' was not declared in this scope
+'args' was not declared in this scope
+'va_start' was not declared in this scope
+'va_end' was not declared in this scope
+<strarg.h> can solve error about string
+*/
+#include <SDL/SDL_image.h>
+#include <string.h>
+#include <stdarg.h>
 
 SDL_Joystick* joystick;
 
 bool keysHeld[SDLK_LAST];
 bool sound = true;
 void deinit();
+
+/* 600910
+Compiler found error
+error: 'IMG_Init' was not declared in this scope
+so i write IMG_Init function before DxLib_Init to avoid error in line number 45
+It should have the better solution.
+*/
+int flags=IMG_INIT_PNG;
+int IMG_Init(int flags) { return flags; }
+
 int DxLib_Init()
 {
     atexit(deinit);
@@ -86,7 +117,18 @@ void ChangeFontType(byte type)
 
 void DrawString(int a, int b, const char *x, Uint32 c)
 {
-    SDL_Color color = { c >> 16, c >> 8, c };
+	/* 600910
+	Compiler found Warning 
+	.. "narrowing conversion of '(c >> 16)' from 'Uint32 {aka unsigned int}' 
+	to 'Uint8 {aka unsigned char}' inside { } [-Wnarrowing]" ..
+	So i use variable c0, c8 and c16 to avoid this warning.
+	SDL_Color color = { eval(c >> 16), c >> 8, c };
+	*/
+	uint8_t c8 = c >>8;
+	uint8_t c16 = c >>16;
+	uint8_t c0 = c;
+	SDL_Color color = { c16, c8, c0 };
+	
     SDL_Surface *rendered = TTF_RenderUTF8_Solid(font[fontsize], x, color);
     if (fontType == DX_FONTTYPE_EDGE) {
 	SDL_Color blk = { 0, 0, 0 };
