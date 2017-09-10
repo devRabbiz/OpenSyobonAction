@@ -1,4 +1,21 @@
+/*
+Open Syobon Action
+Master from https://github.com/angelXwind/OpenSyobonAction
+Fork : 6 September 2017 at https://github.com/thaiall/OpenSyobonAction/
+Update this script : 10 September 2017
+*/
 #include "DxLib.h"
+/* 600910
+Add 1 include for current compiler 
+Test on G++ - compiler version 6.3.0 and 7.1.0 
+on MinGW w64 and Cygwin in Windows 10
+
+Compiler found error
+'strcasecmp' was not declared in this scope
+'strlen' was not declared in this scope
+<string.h> can solve error about string
+*/
+#include <string.h>
 
 extern int ma, t, tt;
 extern SDL_Surface *grap[161][8];
