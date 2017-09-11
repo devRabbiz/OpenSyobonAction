@@ -25,12 +25,25 @@ Uploaded From: Thailand
 - Open-source port developer: Mathew Velasquez
 - Developer/maintainer of this fork: Karen／明美 (@angelXwind)
 
-ส่วนของ Readme เค้าทั้งภาษาอังกฤษ และภาษาญี่ปุ่น
-เกมนี้เรียกกันหลายชื่อเลย
-อาทิ Shobon no Action, Neko Mario, Cat Mario, Cat MeOUCHio
+ส่วนของ README.md เค้ามีทั้งภาษาอังกฤษ และภาษาญี่ปุ่น
+เกมนี้เรียกกันหลายชื่อ อาทิ Shobon no Action, Neko Mario, Cat Mario, Cat MeOUCHio
+ถ้าเป็นภาษาญี่ปุ่นผมอ่านไม่ออกนะครับ
 
-เห็น source code ก็ได้นำมาลอง compile ใหม่
-สรุปว่าใช้ GCC ของ MinGW และ Compile & Link ใน MSys 
+เมื่อได้สำรวจ source code แล้ว ก็ได้ไปทดลอง compile ใหม่
+สรุปว่าใช้ G++ ของ MinGW และ Compile & Link ใน MSys และ CygWin
 ก็กลับมาที่ github.com ของ angelXwind แล้วก็ fork 
+เพื่อ upload source code และแฟ้มที่เกี่ยวข้องหลังปรับแก้เล็กน้อย
 
-เริ่ม fork : 6 กันยายน 2560 เพราะ compile ผ่านเมื่อเที่ยง ๆ นี่หละครับ
+Updated:
+==================
+- เริ่ม fork : 6 กันยายน 2560 เพราะ compile ผ่านเมื่อเที่ยง ๆ นี่หละครับ
+- อัพโหลดแฟ้ม sdl-config, lib/*, include/SDL/*, *.dll 
+หลังทดสอบบน MinGW และ MinGW-w64 ที่ใช้ MSYS หากนไปวางก็จะช่วยให้ compile ง่ายขึ้น
+
+Compile:
+==================
+$ g++ -c main.cpp
+$ g++ -c loadg.cpp
+$ g++ -c dxlib.cpp
+$ g++ main.o loadg.o DxLib.o -o SyobonAction `sdl-config --libs` -lSDL_gfx -lSDL_image -lSDL_mixer -lSDL_ttf
+$ SyobonAction
