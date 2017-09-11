@@ -42,8 +42,8 @@ Updated:
 
 Compile:
 ==================
-$ g++ -c main.cpp
-$ g++ -c loadg.cpp
-$ g++ -c dxlib.cpp
-$ g++ main.o loadg.o DxLib.o -o SyobonAction `sdl-config --libs` -lSDL_gfx -lSDL_image -lSDL_mixer -lSDL_ttf
-$ SyobonAction
+- g++ -c main.cpp
+- g++ -c loadg.cpp
+- g++ -c dxlib.cpp
+- g++ main.o loadg.o DxLib.o -o SyobonAction `sdl-config --libs` -lSDL_gfx -lSDL_image -lSDL_mixer -lSDL_ttf
+- SyobonAction
